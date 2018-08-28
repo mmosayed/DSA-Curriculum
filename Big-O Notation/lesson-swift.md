@@ -56,27 +56,27 @@ What doesn't change is the number of steps! Using the number of steps you can ca
 
 ### Constant Time O(1)
 
-```javascript
-const add = (num1,num2) => { 
+```swift
+func add(num1: Int,num2: Int) -> Int { 
   // I have two numbers, takes one step to return the value
   return num1 + num2
 }
 
 // Assignment operation only takes constant time
-let x = add(2,3);
+let x: Int = add(2,3)
 ```
 
 As long as the program doesn't depend on a growing input, it's constant.
 
 ### Linear Time O(n)
 
-```javascript
+```swift
 // Pass in an array with size n
-const printEach = (arr) => {
-  // Iterate through the entire array
-  arr.forEach(item => {
-    console.log(item);
-  });
+func linearTime(arr: [String]) {
+  // Iterate through each element in the array
+  for element in arr {
+    print(element)
+  }
 }
 ```
 
@@ -84,11 +84,12 @@ This is linear because the steps to complete this function will grow directly wi
 
 ### Quadratic Time O(n<sup>2</sup>)
 
-```javascript
-const quad = (arr) => {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      console.log(arr[i], arr[j]);
+```swift
+//Print out who selected which character.  Two players can select the same character.
+func quadraticTime(arr: [String]) {
+  for stringOne in arr {
+    for stringTwo in arr {
+      print("Player One: \(stringOne), Player Two: \(stringTwo)")
     }
   }
 }
@@ -101,31 +102,32 @@ Usually when we talk about runtime, we talk about the *Average Case* runtime.  T
 
 Example:
 
-```javascript
-const bestAverageAndWorstFunc = (arr) => {
+```swift
+func bestAverageAndWorstFunc(arr: [Int]) {
     // O(1)
-    if (arr.count < 3) {
-      return;
+    if arr.count < 3 {
+        return
     }
-    // O(1)
-    if (arr[0] === 8675309) {
-      return;
+    // (1)
+    if arr[0] == 8675309 {
+        return
     }
     // O(n^2)
-    if (arr[0] + arr[1] === 24601) {
-      arr.forEach(item => {
-        arr.forEach(item => {
-          console.log(item);
-        });
-      });
-      return;
+    if arr[0] + arr[1] == 24601 {
+        for _ in arr {
+            for _ in arr {
+                print("Gotcha!")
+            }
+        }
+        return
     }
     // O(n)
-    arr.forEach(item => {
-      console.log(item);
-    });
+    for num in arr {
+        print(num)
+    }
 }
 ```
+
 
 |Case|Big O|
 |---|---|
@@ -137,18 +139,18 @@ const bestAverageAndWorstFunc = (arr) => {
 
 Now take a look at this following algorithm. Let's derive the Big-O of each step:
 
-```javascript
+```swift
 // O(1)
-let num = []; 
+let numArray: [Int] = []
 
 // O(n)
-for (let i = 0; j < 1000; i++) {
-  num.push(i);
+for i in 0..< 10001 {
+  numArray.append(i)
 }
 
 // O(n)
-for (let j = 0; j < num.length; j++) {
-  console.log(num[j]);
+for j in numArray {
+  print(numArray[j])
 }
 ```
 If we follow algebraic rules and add the Big-O functions together we get:
