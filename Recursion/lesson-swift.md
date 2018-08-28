@@ -43,10 +43,10 @@ The recursive approach seems to be the more simpler and straightforward one righ
 
 A recursive function is a function that calls itself.
 
-```javascript
-const sayHi = () => {
-  console.log("Hi");
-  sayHi();
+```swift
+func sayHi() {
+  print("Hi")
+  sayHi()
 }
 ```
 
@@ -68,10 +68,10 @@ The function should NOT call itself within the base case. In other words, the ba
 
 Here's another example of a recursive function without a base case:
 
-```javascript
-const countDownToZero = (num) => {
-  console.log(num);
-  countDownToZero(num - 1);
+```swift
+func countDownToZero(from num: Int) {
+  print(num)
+  countDown(from: num - 1)
 }
 ```
 
@@ -82,15 +82,16 @@ const countDownToZero = (num) => {
 
 Let's add that base case:
 
-```javascript
-const countDownToZero(num) {
-  if (num === 0) {
-    return;
+```swift
+func countDownToZero(from currentNum: Int) {
+  if currentNum == 0 {
+    return
   }
-  console.log(num);
-  countDownToZero(num - 1);
+  print(currentNum)
+  countDownToZero(from: currentNum - 1)
 }
 ```
+
 Make sure your recursive functions always have a base case!
 
 ### Handling edge cases.
@@ -105,13 +106,13 @@ If the input is less than zero.
 <details>
 <summary>How can we resole this issue</summary>
 
-```javascript
-const countDownToZero = (num) => {
-  if (num <= 0) {
-    return;
+```swift
+func countDownToZero(from currentNum: Int) {
+  if currentNum <= 0 {
+    return
   }
-  console.log(num);
-  countDownToZero(num - 1);
+  print(currentNum)
+  countDownToZero(from: currentNum - 1)
 }
 ```
 </details>
@@ -120,10 +121,10 @@ const countDownToZero = (num) => {
 
 Given this following loop: 
 
-```javascript
-const countUp = (to, starting) => {
-  for (let i = starting; i <= to; i++) {
-    console.log(i);
+```swift
+func countUp(to target: Int, startingAt currentNun: Int) {
+  for i in currentNum..<target {
+    print(i)
   }
 }
 ```
@@ -133,13 +134,13 @@ How would you write this same thing recursively?
 <details>
 <summary>SOLUTION</summary>
 
-```javascript
-const countUp = (to, starting) => {
-  if (starting <= to) {
-    return;
+```swift
+func countUp(to: Int, starting: Int) => {
+  if starting <= to {
+    return
   }
-  console.log(i);
-  countUp(to, starting + 1);
+  print(i);
+  countUp(to: to, starting: starting + 1)
 }
 ```
 </details>
@@ -174,16 +175,13 @@ Let's made an iterative solution first, then let's compare it to a recursive sol
 <details>
 <summary>Iterative Factorial</summary>
 
-```javascript
-const factorialize = (num) => {
-  let result = num;
-  if (num === 0 || num === 1) 
-    return 1; 
-  while (num > 1) { 
-    num--;
-    result *= num;
+```swift
+func factorial(n: Int) -> Int {
+  var product = 1
+  for currentNum in 1...n {
+    product *= currentNum
   }
-  return result;
+  return product
 }
 ```
 </details>
@@ -195,15 +193,12 @@ Now what if we wanted to do this recursively?
 <details>
 <summary>Recursive Factorial</summary>
 
-```javascript
-const factorialize = (num) => {
-  if (num < 0) 
-    return -1;
-  else if (num == 0) 
-    return 1;
-  else {
-    return (num * factorialize(num - 1));
-  }
+```swift
+func recursiveFactorial(n: Int) -> Int {
+  //Base Case
+  guard n > 1 else {return 1} 
+  //Recursive Call
+  return n * recursiveFactorial(n: n - 1) 
 }
 ```
 </details>
@@ -225,11 +220,11 @@ Let's made an iterative solution first, then let's compare it to a recursive sol
 <details>
 <summary>Iterative Fibonacci</summary>
 
-```javascript
-const fib = (n) => {
-  let arr = [0, 1];
-  for (let i = 2; i < n + 1; i++){
-    arr.push(arr[i - 2] + arr[i -1]);
+```swift
+func fib(n: Int) -> Int {
+  let arr = [0, 1]
+  for i in 2..<(n + 1) {
+    arr.append(arr[i - 2] + arr[i - 1])
   }
   return arr[n]
 }
@@ -241,12 +236,10 @@ Pretty cool right? How about if we wanted to solve this recursively?
 <details>
 <summary>Recursive Fibonacci</summary>
 
-```javascript
-const fib = (n) => {
-  if (n < 2) {
-    return n;
-  }
-  return fib(n - 1) + fib(n - 2);
+```swift
+func recursiveFib(n: Int) -> Int {
+  guard n > 1 else { return 1 }
+  return recursiveFib(n: n - 1) + recursiveFib(n: n - 2)
 }
 ```
 </details>
