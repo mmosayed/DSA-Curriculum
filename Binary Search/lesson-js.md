@@ -58,6 +58,10 @@ const binarySearch = (arr, value) => {
 }
 ```
 
+First of all we create a function called 'binarySearch' and take in two parameters: arr and value. We will always need an array to check the middle of and compare it to the value. 
+
+Finally we want to calculate the middle index for every time the array is passed.
+
 #### Step 2: Check the element at the middle index
 
 ```javascript
@@ -70,6 +74,8 @@ const binarySearch = (arr, value) => {
   }
 }
 ```
+
+Our first comparison is to check if the value in the middle index is equal to what we are looking for. If it is, we then return the middle index.
 
 #### Step 3: Check the element at the middle index
 
@@ -101,8 +107,9 @@ const binarySearch = (arr, value) => {
 }
 ```
 
-#### Step 4: Base Case or Fail Case
+If our middle value does not match then we move on to checking the left or right side of the array. If we check the right side of the array, we need to keep track of the middle index offset to get the correct index value in the original array.
 
+#### Step 4: Base Case or Fail Case
 
 ```javascript
 const binarySearch = (arr, value) => {
@@ -130,28 +137,37 @@ const binarySearch = (arr, value) => {
 }
 ```
 
+Finally, we need a fail case. We want to return -1 if the value does not exist in the array. We check if the array length ends up being zero or if the value is greater than the value of the last element in the array. 
+
 ### Binary Search Iteratively
+
+Think you can solve Binary Search iteratively? Give it a shot.
+
+<details>
+<summary>SOLUTION: Binary Search Iteratively</summary>
 
 ```javascript
 function binarySearch (list, value) {
   // initial values for start, middle and end
-  let start = 0
-  let stop = list.length - 1
-  let middle = Math.floor((start + stop) / 2)
+  let start = 0;
+  let stop = list.length - 1;
+  let middle = Math.floor((start + stop) / 2);
 
   // While the middle is not what we're looking for and the list does not have a single item
   while (list[middle] !== value && start < stop) {
     if (value < list[middle]) {
-      stop = middle - 1
+      stop = middle - 1;
     } else {
-      start = middle + 1
+      start = middle + 1;
     }
 
     // recalculate middle on every iteration
-    middle = Math.floor((start + stop) / 2)
+    middle = Math.floor((start + stop) / 2);
   }
 
   // if the current middle item is what we're looking for return it's index, else return -1
-  return (list[middle] !== value) ? -1 : middle
+  return (list[middle] !== value) ? -1 : middle;
 }
-```
+```</details>
+
+
