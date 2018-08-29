@@ -57,7 +57,7 @@ Imagine creating a program that keeps track of a group of people sitting togethe
 These are very high level problems. You as the programmer don't want to deal with all the nitty gritty details. 
 
 Now imagine if we wanted to solve the problem of who's sitting to who with Native Data Types:
-```javascript 
+```swift
 let person1 = "Joe"
 let person2 = "Amy"
 let person3 = "Emily"
@@ -65,8 +65,8 @@ let person3 = "Emily"
 
 This obviously becomes too annoying to deal with. We can make this simpler using an Abstract Data Structure we've been using all along! The Array! 
 
-```javascript 
-let group = [ "Joe", "Amy", "Emily" ];
+```swift
+let group: [String] = [ "Joe", "Amy", "Emily" ] 
 ```
 
 Why is this better? 
@@ -94,28 +94,28 @@ Abstract Data Structures are designed to perform and solve very unique problems 
 
 Design and develop this 'MovieGroup' abstract data structure.
 
-```javascript 
+```swift
 // Create a movie group with peeps
-let group = new MovieGroup([ "Joe", "Amy", "Emily" ]);
+let group = MovieGroup(collection: [ "Joe", "Amy", "Emily" ])
 
-group.screenPerspective();
+group.screenPerspective()
 // Screen --------> [ XXXXXXXXXX ]
 // Group  --------> [ "Joe", "Amy", "Emily" ]
 
-group.leftSeat(); // Joe
-group.rightSeat(); // Emily
+group.leftSeat() // Joe
+group.rightSeat() // Emily
 
-group.addNewLeftSeat("Bob"); // Added Bob to the collection
-group.leftSeat(); // Bob
+group.addNewLeftSeat("Bob") // Added Bob to the collection
+group.leftSeat() // Bob
 
-group.flipScreen();
+group.flipScreen()
 
-group.screenPerspective();
+group.screenPerspective()
 // Group  --------> [ "Bob", "Joe", "Amy", "Emily" ]
 // Screen --------> [ XXXXXXXXXX ]
 
-group.leftSeat(); // Emily
-group.rightSeat(); // Bob
+group.leftSeat() // Emily
+group.rightSeat() // Bob
 ```
 
 
