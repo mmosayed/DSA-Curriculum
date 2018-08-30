@@ -11,9 +11,9 @@
 | 5 | Merge Sort: Divide & Conquer*  | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Sorting%20Algorithms/lesson-merge-js.md) / iOS / Android
 | 6 | Quick Sort* | Web / iOS / Android
 | 7 | Abstract Data Structures  | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Abstract%20Data%20Structures/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Abstract%20Data%20Structures/lesson-swift.md) / Android
-| 8 | Linked List* | Web / iOS / Android
+| 8 | Linked List* | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Linked%20List/lesson-js.md) / iOS / Android
 
-(* needs to be revisited)
+(* needs to be revisited or unfinished)
 
 ## Summary
 Data Structures & Algorithms (DSA) are the building blocks that allow programmers to code and think at a higher level. Data structures are unique ways of organising and collecting data so that we can perform operations in an effective way. Algorithms are a set of instructions that solve hard problems in an efficient manner. Understanding DSA is critical for entry level interviews. DSA is usually technology agnostic so it instills a strong computer science mindset. 
