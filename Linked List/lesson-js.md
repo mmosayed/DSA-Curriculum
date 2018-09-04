@@ -187,6 +187,7 @@ append(value) {
   // Then make that the new Tail
   this.tail = newNode;
 
+  this.length++;
 }
 ```
 
@@ -244,5 +245,61 @@ nodeAt(index) {
     counter++;
   }
 
+  return pointer;
 }
 ```
+
+This is fairly similiar to the previous traversal example. In this case we start with the 'Head', which happens to be 'Zero' index, then work our way down the nodes as long as the counter isn't matching the index we are searching for. 
+
+Finally, when we do arrive at the index, we return the Node to the user. Where they can easily access the value or any associated pointers. 
+
+### pop() 
+
+Finally, we have pop(). We want to be able to remove the last element of the list and get back that Node once the operation is done. 
+
+How would we approach this?
+1. Check if the head is the tail. Why? That means there is only one Node in the list and we have both of our Head and Tail pointers to it.
+2. If not, then we need to traverse down the list and be able to identify the last and second to last elements.
+
+```javascript
+pop() {
+  const deletedTail = this.tail;
+
+  if (this.head === this.tail) {
+    // There is only one node in linked list.
+    this.head = null;
+    this.tail = null;
+    this.length--;
+    return deletedTail;
+  }
+
+  // If there are many nodes in linked list...
+
+  // Rewind to the last node and delete "next" link for the node before the last one.
+  let currentNode = this.head;
+  while (currentNode.next) {
+    if (!currentNode.next.next) {
+      currentNode.next = null;
+    } else {
+      currentNode = currentNode.next;
+    }
+  }
+
+  this.tail = currentNode;
+
+  this.length--;
+  return deletedTail;
+}
+```
+
+So, as you can see being able to properly traverse down a linked data structure is crucial. You will use this same traversal techniques for more advanced data structures.
+
+## Exercise
+
+Implement the following Linked List Methods:
+
+1. **shift() :** Remove the first element from the beginning of the list. Return the removed node.
+2. **removeAt(index) :** Remove the element at the index provided. Return the removed node.
+3. **find(value) :** Find and return the index of the node with passed value. If value doesn't exist in the list return -1. 
+4. **toArray() :** Returns an array with the values of the linked list.
+
