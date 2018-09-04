@@ -261,14 +261,14 @@ How would we approach this?
 
 ```swift
 public func pop() -> Node<Value> {
-  let deletedTail = this.tail;
+  let deletedTail = tail
 
   if head == tail {
     // There is only one node in linked list.
     head = nil
     tail = nil
     length -= 1
-    return deletedTail;
+    return deletedTail
   }
 
   // If there are many nodes in linked list...
@@ -286,7 +286,7 @@ public func pop() -> Node<Value> {
   tail = currentNode
 
   length -= 1
-  return deletedTail;
+  return deletedTail
 }
 ```
 
