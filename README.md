@@ -12,7 +12,7 @@
 | 6 | Quick Sort* | Web / iOS / Android
 | 7 | Abstract Data Structures  | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Abstract%20Data%20Structures/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Abstract%20Data%20Structures/lesson-swift.md) / Android
 | 8 | Linked List | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Linked%20List/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Linked%20List/lesson-swift.md) / Android
-| 9 | Stacks* | Web / iOS / Android
+| 9 | Stacks | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Stacks/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Stacks/lesson-swift.md) / Android
 | 10 | Queues* | Web / iOS / Android
 | 11 | Hash Tables* | Web / iOS / Android
 
