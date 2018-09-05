@@ -15,6 +15,9 @@
 | 9 | Stacks | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Stacks/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Stacks/lesson-swift.md) / Android
 | 10 | Queues | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Queues/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Queues/lesson-swift.md) / Android
 | 11 | Hash Tables* | Web / iOS / Android
+| 12 | Trees* | Web / iOS / Android
+| 13 | Graphs* | Web / iOS / Android
+
 
 (* needs to be revisited or unfinished)
 
