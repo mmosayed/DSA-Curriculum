@@ -153,7 +153,7 @@ class Stack {
 
 As you can see, pretty simple right? Stacks are simple to conceptualize and code once you understand the fundementals. 
 
-## Excersize
+## Excercise
 
 Implement a Stack in the traditional way using Linked Lists. You may not use any Array or built in Array methods. 
 

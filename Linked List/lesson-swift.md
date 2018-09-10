@@ -3,6 +3,9 @@
 ## Goals
 - Understand what's a Linked List
 - Arrays vs. Lists
+- What's a Node?
+- What's a container class?
+- Linked List Implementation
 
 
 ## Lesson 

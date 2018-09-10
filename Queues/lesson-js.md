@@ -154,7 +154,7 @@ class Queue {
 }
 ```
 
-## Excercize
+## Excercise
 
 1. Implement a Queue in the traditional way using Linked Lists. You may not use any Array or built in Array methods. 
 2. Implement a Queue using Double Stacks. You may not use any Array or built in Array methods. 
