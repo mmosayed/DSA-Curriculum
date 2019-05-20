@@ -4,20 +4,20 @@
 
 | # | Topic | Lesson |
 |---| ---   | ---    |
-| 1 | Intro to Whiteboarding | [Web](./whiteboarding/README.md) 
-| 1 | Big-O Notation | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Big-O%20Notation/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Big-O%20Notation/lesson-swift.md) / Android
-| 2 | Recursion | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Recursion/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Recursion/lesson-swift.md) / Android
-| 3 | Binary Search | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Binary%20Search/lesson-js.md) / iOS / Android
-| 4 | Bubble Sort: Intro to Sorting* | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Sorting%20Algorithms/lesson-bubble-js.md) / iOS / Android
-| 5 | Merge Sort: Divide & Conquer*  | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Sorting%20Algorithms/lesson-merge-js.md) / iOS / Android
-| 6 | Quick Sort* | Web / iOS / Android
-| 7 | Abstract Data Structures  | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Abstract%20Data%20Structures/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Abstract%20Data%20Structures/lesson-swift.md) / Android
-| 8 | Linked List | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Linked%20List/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Linked%20List/lesson-swift.md) / Android
-| 9 | Stacks | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Stacks/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Stacks/lesson-swift.md) / Android
-| 10 | Queues | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Queues/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Queues/lesson-swift.md) / Android
-| 11 | Hash Tables | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Hash%20Tables/lesson-js.md) / iOS / Android
-| 12 | Trees* | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Trees/lesson-js.md) / iOS / Android
-| 13 | Graphs* | Web / iOS / Android
+| 1 | Intro to Whiteboarding | [Web/iOS](./whiteboarding/README.md)
+| 2 | Big-O Notation | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Big-O%20Notation/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Big-O%20Notation/lesson-swift.md)
+| 2 | Recursion | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Recursion/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Recursion/lesson-swift.md)
+| 3 | Binary Search | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Binary%20Search/lesson-js.md) / iOS
+| 4 | Bubble Sort: Intro to Sorting* | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Sorting%20Algorithms/lesson-bubble-js.md) / iOS
+| 5 | Merge Sort: Divide & Conquer*  | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Sorting%20Algorithms/lesson-merge-js.md) / iOS
+| 6 | Quick Sort* | Web / iOS
+| 7 | Abstract Data Structures  | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Abstract%20Data%20Structures/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Abstract%20Data%20Structures/lesson-swift.md)
+| 8 | Linked List | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Linked%20List/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Linked%20List/lesson-swift.md)
+| 9 | Stacks | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Stacks/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Stacks/lesson-swift.md)
+| 10 | Queues | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Queues/lesson-js.md) / [iOS](https://github.com/mmosayed/DSA-Curriculum/blob/master/Queues/lesson-swift.md)
+| 11 | Hash Tables | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Hash%20Tables/lesson-js.md) / iOS
+| 12 | Trees* | [Web](https://github.com/mmosayed/DSA-Curriculum/blob/master/Trees/lesson-js.md) / iOS
+| 13 | Graphs* | Web / iOS
 
 
 (* needs to be revisited or unfinished)
