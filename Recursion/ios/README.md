@@ -1,68 +1,48 @@
 # Recursion
 
-## Goals
-* Understand what recursion is
-* Understand recursive case & base case
-* Understand how to write basic recursive functions
+## Objectives
 
-## Lesson
+1. Write recursive functions to solve problems
+2. Use dynamic programming to improve runtime efficiency
 
-### What is Recursion?
+## Resources
 
+
+# What is Recursion?
 In computer science, recursion basically means a function that calls itself. Recursion can be a little mind bending at first but is actually relatively simple: it's basically just another way to create loops.
 
-In fact, anything that can be done iteratively with a for loop or while loop can also be solved with recursion, and vice versa. There are some languages (like Haskell) that do not even have iterative for loops or while loops at all, and use recursion for all looping instead!
+In fact, anything that can be done iteratively with a `for` loop or `while` loop can also be solved with recursion, and vice versa. There are some languages (like [Haskell](https://www.haskell.org/)) that do not even have iterative `for`loops or `while` loops at all, and use recursion for all looping instead!
 
-Recursion is often used in functional programming. Mastering recursion can help you do some magical things in code.
+# How to Use Recursion
 
-Let's dive in.
+A recursive function consists of two things:
 
-### So why Recursion?
+1. A recursive call
+2. A base case
 
-![](assets/boxes_in_boxes.jpg)
-
-Imagine there is a big box with smaller boxes in it. These smaller boxes can have more smaller boxes in them. Ultimately, there is ONE key hidden away in one of the boxes. Your job is to search and find that key. 
-
-We can solve this iteratively and recursively. Let's list out the steps for each.
-
-**Iterative Approach:**
-1. Pile the boxes to look through.
-2. Grab each box one by one, and look through it.
-3. If you find a box inside the current box: add it to the end of the pile to look through later.
-4. If you find the key, then you’re done!
-5. Repeat this cycle.
-
-**Recursive Approach:**
-1. Look through the box.
-2. If you find a box, go back to Step 1.
-3. If you found the key, then you're done!
-
-The recursive approach seems to be the more simpler and straightforward one right? With *less steps* for us to worry about! 
-
-### Writing Recursive Functions
-
-A recursive function is a function that calls itself.
+## The Recursive Call
+A recursive function is a function that calls iteself.
 
 ```swift
-func sayHi() {
-  print("Hi")
-  sayHi()
+func recurse() {
+	print("hi")
+	recurse()
 }
 ```
-
-sayHi() is a recursive function. It will priint "hi", then call itself, which will print "hi" and then call itself *AGAIN*, which will print "hi" and call itself...indefinitely. 
+recurse() is a recursive function.  It will print "hi", then call itself, which will print "hi" and then call itself, which will print "hi" and then call itself, and so on.  
 
 <details>
 <summary>Recursive Patrick</summary>
 
-![recursive patrick](assets/patrick_recursive.gif)
+![recursive patrick](https://media.giphy.com/media/xlTwaFb20TVjW/giphy.gif)
 </details>
 
-So, how do we get the function to stop?
+<br>
+How can we stop this process and have it do something more useful?
 
-### The Base Case
-
+## The Base Case
 The most important part of any recursive function is the 'base case'. The base case is basically a conditional that tells the function to stop calling itself (the base case is usually just a simple `if` statement):
+
 
 The function should NOT call itself within the base case. In other words, the base case `if` statement should do the very last thing the function does before ending.
 
@@ -70,13 +50,15 @@ Here's another example of a recursive function without a base case:
 
 ```swift
 func countDownToZero(from num: Int) {
-  print(num)
-  countDown(from: num - 1)
+    print(num)
+    countDown(from: num - 1)
 }
 ```
 
+
+
 <details>
-<summary> When do want this function to stop running? </summary>
+<summary> When do we want this function to stop running? </summary>
         When num is zero
 </details>
 
@@ -84,17 +66,16 @@ Let's add that base case:
 
 ```swift
 func countDownToZero(from currentNum: Int) {
-  if currentNum == 0 {
-    return
-  }
-  print(currentNum)
-  countDownToZero(from: currentNum - 1)
+    if currentNum == 0 {
+        return
+    }
+    print(currentNum)
+    countDownToZero(from: currentNum - 1)
 }
 ```
-
 Make sure your recursive functions always have a base case!
 
-### Handling edge cases.
+#### Handling edge cases.
 
 Even though we added a base case to our countDownToZero function above, it still has the possibility to run forever.
 
@@ -108,156 +89,171 @@ If the input is less than zero.
 
 ```swift
 func countDownToZero(from currentNum: Int) {
-  if currentNum <= 0 {
-    return
-  }
-  print(currentNum)
-  countDownToZero(from: currentNum - 1)
+    if currentNum <= 0 {
+        return
+    }
+    print(currentNum)
+    countDownToZero(from: currentNum - 1)
 }
 ```
+
 </details>
 
-### Recursive vs. Iterative Loops
 
-Given this following loop: 
+## Practice problem 1
+
+Write a function that counts up to a target number.
+
+```swift
+func countUp(to target: Int, startingAt currentNum: Int) {
+}
+```
+
+## Recursive vs Iterative Loops
+We just saw an example of how to write a loop recursively.
+
+We could have done that iteratively pretty easily:
 
 ```swift
 func countUp(to target: Int, startingAt currentNun: Int) {
-  for i in currentNum..<target {
-    print(i)
-  }
+   for i in currentNum...target {
+      print(i)
+   }
 }
 ```
 
-How would you write this same thing recursively?
+Anything that we can solve iteratively, we can solve recurseively and vice versa.
 
-<details>
-<summary>SOLUTION</summary>
+This leads to a natural question.  If recursion looks more confusing, why would we ever want to use it solve problems?
 
-```swift
-func countUp(to: Int, starting: Int) => {
-  if starting <= to {
-    return
-  }
-  print(i);
-  countUp(to: to, starting: starting + 1)
-}
-```
-</details>
+# When to use recursion
+In general, you should only use recursion if it would be significantly simpler than the iterative solution. A good rule of thumb is to use recursion when it helps makes your code more readable. In most cases iterative solutions are preferable over recursive solutions because recursion has some added performance costs, like extra function calls.
 
- Anything that we can solve iteratively, we can solve recurseively and vice versa. 
 
-This leads to a natural question.  If recursion looks more confusing, why would we ever want to use it to solve problems?
+## Factorial
 
-### Famous Recursive Problem #1: Factorial
 
 One simple example of how to practically use recursion is with the factorial algorithm.
 
 *Factorial* (symbol: "!") means to multiply a integer by every integer before it.
 
-
-The pattern is like what's shown below:
-
-```
-0! = 1
-1! = 1
-2! = 2 * 1
-3! = 3 * 2 * 1
-4! = 4 * 3 * 2 * 1
-5! = 5 * 4 * 3 * 2 * 1
-```
 ```
 Example: 5! = 5 * 4 * 3 * 2 * 1 = 120
 ```
 
-Let's made an iterative solution first, then let's compare it to a recursive solution:
+Let's make an iterative solution first, then let's compare it to a recursive solution:
 
 <details>
-<summary>Iterative Factorial</summary>
-
-```swift
+<summary> Iterative factorial </summary>
 func factorial(n: Int) -> Int {
-  var product = 1
-  for currentNum in 1...n {
-    product *= currentNum
-  }
-  return product
+    var product = 1
+    for currentNum in 1...n {
+        product *= currentNum
+    }
+    return product
 }
-```
 </details>
 
-This actually requires some thought. We need to run a while loop as long as the solution isn't finished. 
-
-Now what if we wanted to do this recursively?
 
 <details>
-<summary>Recursive Factorial</summary>
+<summary> Recursive Factorial </summary>
 
 ```swift
 func recursiveFactorial(n: Int) -> Int {
-  //Base Case
-  guard n > 1 else {return 1} 
-  //Recursive Call
-  return n * recursiveFactorial(n: n - 1) 
+    guard n > 1 else {return 1} //Base Case
+    return n * recursiveFactorial(n: n - 1) //Recursive Call
 }
 ```
+
 </details>
 
-### Famous Recursive Problem #2: Fibonacci
 
-A common, real world example of when to use recursion is the Fibonacci sequence. Here is an iterative solution for finding the nth number of a Fibonacci sequence:
 
-The Fibonacci sequence is made by adding the two previous numbers together:
 
-```
-0, 1, 1, 2, 3, 5, 8, 13, 21, 34 ...
-```
+## Fibonacci
 
-If we were to take a short Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21] and fib(4), the result would be equal to 3, so basically we need to return an element with index 4 from our Fibonacci sequence array.
 
-Let's made an iterative solution first, then let's compare it to a recursive solution:
+A common, real world example of when to use recursion is the Fibonacci sequence. Here is the recursive solution for finding the nth number of a Fibonacci sequence:
+
+The [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number) is made by adding the two previous numbers together:
+
+1, 1, 2, 3, 5, 8, 13, 21, 34 ...
 
 <details>
-<summary>Iterative Fibonacci</summary>
-
-```swift
-func fib(n: Int) -> Int {
-  let arr = [0, 1]
-  for i in 2..<(n + 1) {
-    arr.append(arr[i - 2] + arr[i - 1])
-  }
-  return arr[n]
-}
-```
-</details>
-
-Pretty cool right? How about if we wanted to solve this recursively?
-
-<details>
-<summary>Recursive Fibonacci</summary>
+<summary> Recursive Fibonacci </summary>
 
 ```swift
 func recursiveFib(n: Int) -> Int {
-  guard n > 1 else { return 1 }
-  return recursiveFib(n: n - 1) + recursiveFib(n: n - 2)
+    guard n > 1 else { return 1 }
+    return recursiveFib(n: n - 1) + recursiveFib(n: n - 2)
 }
 ```
+
 </details>
 
-![recursive fib](assets/fib_rec.png)
+The advantage of recursive solutions is that they can be much easier to understand.  This code is very dense, so we should take a look at what it's doing.
 
-### When to use recursion
+<details>
+<summary> Visual Representation </summary>
 
-In general, you should only use recursion if it would be significantly simpler than the iterative solution. A good rule of thumb is to use recursion when it helps makes your code more readable. In most cases iterative solutions are preferable over recursive solutions because recursion has some added performance costs, like extra function calls.
+![Fib](http://www.introprogramming.info/wp-content/uploads/2013/07/clip_image00525.png)
 
-
-
-
-
+</details>
 
 
+<details>
+<summary> With stick figures </summary>
+
+![Fib](https://i.stack.imgur.com/6hD41.png)
+
+</details>
+
+
+<details>
+
+<summary> What might be a downside of using this method? </summary>
+
+It's very slow!  We have to do a lot of the same work over again.
+
+</details>
 
 
 
+## Dynamic Programming and Memoization
+
+**Memoization**    
+In computing, memoization is an optimization technique used primarily to speed up computer programs by _storing the results of expensive function calls and returning the cached result_ when the same inputs occur again.
+
+**Dynamic Programming** is the combination of **Memoization** and **recursion**.  We can work memoization into our recursive Fibonacci to improve the runtime.
+
+```swift
+var fibValues = [Int: Int]()
+func recursiveFibDynamicProgramming(num: Int) -> Int {
+  if let fibonacci = fibValues[num] {
+    return fibonacci
+  }
+
+  guard num > 1 else {
+    fibValues[num] = num
+    return 1
+  }
+
+  let fibonacci = recursiveFibDynamicProgramming(num: num - 1) + recursiveFibDynamicProgramming(num: num - 2)
+  fibValues[num] = fibonacci
+  return fibonacci // 19 times
+}
+```
 
 
+
+# Other tips
+
+## Calculating Big O of Recursive Functions
+In iterative loops, we count the number of loops in order to figure out the Big O complexity. Similarly, with recursion, we count the number of times the function is being called.
+
+
+## Recursive State
+In recursive functions, state is passed down through arguments. In other words, you should generally not save variables within your recursive functions. Instead, if you want to keep track of any data, you should pass them down through arguments. In this way the function's arguments basically keep a history of the state of the function. This makes recursive functions immutable, which is one of their advantages.
+
+**Pair Programming exercises**   
+[Recursion Exercises](./lab.md)  
