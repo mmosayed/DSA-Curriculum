@@ -6,154 +6,259 @@
 - Queue Methods
 - Understand how to implement a queue
 
-## Lesson 
+## Lesson
 
-## What's a Queue?
+# Queues
 
-Queues are very common just like stacks. Here are some common examples of things you would queue in real life:
+[Queue Repo](https://github.com/joinpursuit/Pursuit-Core-iOS-Queue)  
 
-- Waiting on line at the DMV
-- Managing calls at a help desk ("Your call will be answered in the order it was received")
-- Ordering at a fast food restaurant
+A **Queue** is another way to organize and store data. A queue is an [abstract data type](https://en.wikipedia.org/wiki/Abstract_data_type).
 
-![Line Cartoon](assets/line-cartoon.jpeg)
+A queue is like a line of people.  When someone enters the line, they enter at the back.  When someone leaves the line, they leave from the front.
 
-There are two fundemental concepts with a queue collection:
+![Line of people](http://pythonschool.net/data-structures-algorithms/images/queue.jpg)
 
-1. When you add a new element it goes to the end of the queue. 
-2. When you remove an element you're only allowed to remove the first element in the queue.
+In computer science, the following image models the abstract data type:
 
-This is the opposite of stacks, and the concept is FIFO.
+![Queue ADT](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Data_Queue.svg/1200px-Data_Queue.svg.png)
 
-## FIFO
+**Enqueue** means enter the queue
 
-FIFO stands for 'First In First Out'. 
+**Dequeue** means leave the queue
 
-Makes sense right? If you're first in line, you should be the first one to be served. 
+# First In First Out (FIFO)
 
-1. **Enqueue** is the term that describes to enter the queue.
-2. **Dequeue** means to leave the queue.
+In a queue, the first element to enter the queue is also the first one to leave it.  This is because we always remove from the front of the queue and insert at the back of the queue.  This order is called **First In First Out**, or **FIFO**.
 
-Just like stacks, in queues you're only allowed to access the next element in line to be dequeued. 
+As soon as we dequeue, we are dequeuing the element that has been in line the longest.  Just like if you were queueing at a bank, if you are the first person in the queue, you will be the first one helped.
 
-![Line Cartoon](assets/queue-graphic.png)
+## Methods
 
-## Queue Use Cases
+A queue has the following methods:
 
-Here are some real world applications of queues:
+- **enqueue(_:)** : Adds an element to the back of the queue.
 
-- Queue of people at any service such as ticketing.
-- Queue of air planes waiting to take off in the air port.
-- Queue of data from a server to a client.
-- Vehicles on the road moving in one direction.
+- **dequeue()** : Removes and returns the first element in the queue.
 
-## Queue Methods
+- **peek()** : Returns the element at the front of the queue without removing it
 
-1. **enqueue(value) :** Add new element to the end of the queue.
-2. **dequeue() :** Removes element from beginning of the queue and returns it. 
-3. **peek() :** Returns the element from beginning of the queue without removing it.
-4. **isEmpty() :** Returns a boolean indicating if the queue is empty or not.
+And the property
 
-## Queue Implementation
+- **isEmpty** : Returns whether or not the queue has any elements inside of it
 
-Just like the stack there are several ways to implement the queue. For the sake of teaching the basic concepts we will go with the Array approach. But here are more ways to implement:
+## Performance
 
-1. Array Implementation
-2. Linked List Implementation
-3. Double Stack Implementation
+<details>
+	<summary>Access an element at index n</summary>
+	O(n)
+</details>
 
-### Container Class
+<details>
+	<summary>Find an element</summary>
+	O(n)
+</details>
 
-```swift
-class Queue<T> {
+<details>
+	<summarys>Insert an element (by enqueueing)</summary>
+	O(1)
+</details>
 
-  private var arr: [T] = []
+<details>
+	<summary>Delete an element (by dequeueing)</summary>
+	O(1)
+</details>
 
-  public init() {}
+## Use Cases:
 
-}
-```
+1. Managing calls at a help desk ("Your call will be answered in the order it was received")
+2. Order list at a fast food restaurant
+3. IT reapair tickets
 
-The only important member property of the class is an Array to hold our elements.
 
-### enqueue(value)
+## Implementation:
 
-What do we want to accomplish? Adding a new element to the END of the queue. 
+Just like with stacks, we can implement a queue using a variety of different data structures.  Common implementations include:
 
-```swift
-func enqueue(_ newElement: T) {
-  arr.append(newElement)
-}
-```
+1. Using an array
+2. Using a linked list
+3. Using two stacks
 
-### dequeue()
 
-Now we want to remove and return the first element, which is very simple using Arrays.
+## Implementation - Array
 
-```swift
-func dequeue() -> T? {
-  return arr.removeFirst()
-}
-```
+Conceptually, it is fairly simple to model a Queue using an Array.
 
-### peek()
-
-We want to just be able to access the element in the beginning of the queue. 
+The code below creates a Linked List where we enqueue by appending to the Array, and dequeue by removing the first element.
 
 ```swift
-func peek() -> T? {
-  return arr.first
-}
-```
+struct Queue<T> {
+  private var items = [T]()
 
-### isEmpty()
-
-Check if the queue is empty.
-
-```swift
-func isEmpty() {
-  // Check if array length is zero
-  return arr.isEmpty
-}
-```
-
-### Putting it all Together
-
-```javascript
-class Queue<T> {
-
-  private var arr: [T] = []
-
-  public init() {}
-
-  func enqueue(_ newElement: T) {
-    arr.append(newElement)
+  public var isEmpty: Bool {
+    return items.isEmpty
   }
 
-  func dequeue() -> T? {
-    return arr.removeFirst()
+  public var peek: T? {
+    return items.first
   }
 
-  func peek() -> T? {
-    return arr.first
+  public mutating func enqueue(_ item: T) {
+    items.append(item)
   }
 
-  func isEmpty() {
-    // Check if array length is zero
-    return arr.isEmpty
+  public mutating func dequeue() -> T? {
+    return items.removeFirst()
   }
-
 }
 ```
 
-## Excercise
+<details>
+<summary>Why is this not a good way to create a queue?
+</summary>
 
-1. Implement a Queue in the traditional way using Linked Lists. You may not use any Array or built in Array methods. 
-2. Implement a Queue using Double Stacks. You may not use any Array or built in Array methods. 
+In the implementation above, dequeueing is a *linear* operation.  We'll need to shift everything in the array back to the left to fill in any gaps.
 
-Implement them with the following methods:
+</details>
 
-1. **push(value) :** Add new element to the top of the stack.
-2. **pop() :** Remove element from top of the stack and return it. 
-3. **peek() :** Returns the top element of the stack without removing it.
-4. **isEmpty() :** Returns a boolean indicating if the stack is empty or not.
+To see an example of how to model an efficient Queue with an array, check out the resource [here](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Queue)
+
+
+## Implementation - Linked List
+
+A more standard implementation of a queue is using a linked list.  We will need to keep track of both the *head* and the *tail* of our linked list.  When we **enqueue**, we will add the new element to end and reset the tail to it.  When we **dequeue**, we will move the head one node forwards and return the old head value.  An empty queue will be represented by having both the head and the tail be nil.
+
+```swift
+class LLNode<T: Equatable>: Equatable, CustomStringConvertible {
+  public var value: T
+  public var next: LLNode?
+
+  var description: String {
+    guard let next = next else { return "nil <- \(value)" }
+    return "\(next) <- \(value)"
+  }
+
+  init(value: T) {
+    self.value = value
+  }
+
+  static func ==(lhs: LLNode, rhs: LLNode) -> Bool {
+    return lhs.value == rhs.value &&
+      lhs.next == rhs.next
+  }
+}
+
+struct Queue<T: Equatable>: CustomStringConvertible {
+  private var head: LLNode<T>? // could be nil
+  private var tail: LLNode<T>? // could be nil
+
+  var description: String {
+    guard let head = head else { return "empty" }
+    return "(Back) \(head) (Front)"
+  }
+
+  public var isEmpty: Bool {
+    return head == nil
+  }
+
+  public var peek: T? { // read-only property
+    return head?.value
+  }
+
+  public mutating func enqueue(_ value: T) {
+    let newNode = LLNode(value: value)
+    guard let lastNode = tail else {
+      head = newNode
+      tail = newNode
+      return
+    }
+    lastNode.next = newNode
+    tail = newNode
+  }
+
+  // reminder: check for empty state first
+  // remove item from the front of the queue
+  // modify the head next value
+  // return the value removed (T?)
+  @discardableResult
+  public mutating func dequeue() -> T? {
+    var valueRemoved: T?
+    guard !isEmpty else { return valueRemoved }
+    valueRemoved = head?.value
+    if head == tail { tail = nil }
+    head = head?.next
+    return valueRemoved
+  }
+}
+```
+
+**Excersie: Write a function that prints out all elements in a Queue**   
+
+## Implementation - Two Stacks
+
+A Queue is an Abstract Data Type.  As such, we can chose to have any any data structure  underlying our queue.  We saw implementations with both an Array and a Linked List above.  
+
+A common interview problem is to use two stacks to represent a Queue.  This is less for its usefulness as a way of modeling information, but more to demonstrate familiarity with Stacks and Queues.
+
+As such, this implementation is not meant to be particularly efficient.
+
+```swift
+struct Stack<T: Equatable> {
+  private var items = [T]()
+
+  public var isEmpty: Bool {
+    return items.isEmpty
+  }
+
+  public var count: Int {
+    return items.count
+  }
+
+  public var peek: T? {
+    return items.last
+  }
+
+  public mutating func push(_ item: T) {
+    items.append(item)
+  }
+
+  @discardableResult
+  public mutating func pop() -> T? {
+    guard !isEmpty else { return nil }
+    return items.removeLast()
+  }
+}
+
+struct Queue<T: Equatable> {
+  private var enqueueStack = Stack<T>()
+  private var dequeueStack = Stack<T>()
+
+  public var isEmpty: Bool {
+    return enqueueStack.isEmpty && dequeueStack.isEmpty
+  }
+
+  public mutating func enqueue(_ value: T) {
+    while let popElement = dequeueStack.pop() {
+      enqueueStack.push(popElement)
+    }
+    enqueueStack.push(value)
+  }
+
+  public mutating func dequeue() -> T? {
+    while let popElement = enqueueStack.pop() {
+      dequeueStack.push(popElement)
+    }
+    return dequeueStack.pop()
+  }
+
+  public mutating func peek() -> T? {
+    while let popElement = enqueueStack.pop() {
+      dequeueStack.push(popElement)
+    }
+    return dequeueStack.peek
+  }
+}
+```
+
+# Exercises
+
+[Link](./lab.md) to exercises for pair whiteboarding.
