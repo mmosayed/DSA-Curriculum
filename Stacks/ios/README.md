@@ -1,154 +1,230 @@
 # Stacks
 
-## Goals
-- Understand what's a Stack
+## Objectives
+Understand:
+- what's a Stack
 - LIFO
 - Stack Methods
-- Understand how to implement a stack
+- how to implement a stack
 
-## Lesson 
+A Stack is an abstract data structure we use in storing data.
 
-## What's a Stack?
+A stack like in real life is a piled structure of items, such as a stack of plates as pictured below.  You can only add or take away dishes at the top of the stack (pile).
 
-Stacks are very common. Here are some common examples of things you would stack in real life:
+![Dishes Stack](http://www.dabillgh.com/wp-content/gallery/kitchen-and-crockery/DbillGH2343466.jpg)
 
-- Dishes
-- Pancakes 
-- Books
-- Dollar Bills
+A more traditional representation looks like:
 
-Just like the way you represent stacks in the physical world, we do the same in computer science.
+![CS Stack](http://stanford.edu/class/archive/cs/cs106b/cs106b.1158/images/stack-figure.png)
 
-![Stack of Dishes](assets/stack-dishes.jpeg)
+## Last In First Out (LIFO)
 
-There are two fundemental concepts with a stack collection:
+Because we can only interact with the top of the stack, the last thing we put into the stack is the first thing that will come out.  This is called Last In First Out or LIFO.
 
-1. When you add a new element it goes on top of the stack.
-2. When you remove an element you're only allowed to remove the one on top.
+In our dish stack above, the last dish that we put away will be the first one we pick back up when need to use another dish.
 
-This is a very famous concept called LIFO.
+## Methods
 
-## LIFO
+A stack has the following methods:
 
-![Stack of Dishes](assets/stack-graphic.png)
+**push()** : Adds a new element to the top of the stack
 
-LIFO stands for 'Last In First Out'. 
+**pop()** : Removes and returns the top element of the stack
 
-In stacks only two operations are allowed: push the item into the stack, and pop the item out of the stack. A stack is a limited access data structure; elements can only be added and removed from the stack only at the top. 
+**peek()** : Returns the top element of the stack without removing it
 
-Just like in the physical world, if you tried to pull out a dish from the middle it would all come crashing.
+**isEmpty()** : Returns whether or not the stack has any elements inside of it
 
-## Stack Use Cases
+## Performance
 
-Here are some real world applications of stacks:
+<details>
+	<summary>Access an element</summary>
+	O(n)
+</details>
 
-- Back & Forward button on Web Browsers.
-- Reversing a word. You push a word letter by letter, then pop letters from the stack.
-- Undo mechanism. Example, undo in a text editor.
-- Syntax checking for compilers. Example, checking for parentheses and braces.
-- Memory allocation uses stacks at the architectural level. Memory for local variables is also managed using a stack.
+<details>
+	<summary>Find an element</summary>
+	O(n)
+</details>
 
-## Stack Methods
+<details>
+	<summary>Insert an element </summary>
+	O(1)
+</details>
 
-1. **push(value) :** Add new element to the top of the stack.
-2. **pop() :** Remove element from top of the stack and return it. 
-3. **peek() :** Returns the top element of the stack without removing it.
-4. **isEmpty() :** Returns a boolean indicating if the stack is empty or not.
+<details>
+	<summary>Delete an element</summary>
+	O(1)
+</details>
 
-## Stack Implementation
+## Use cases
 
-There are two ways of implementing Stacks. One is the hard traditional way and the other is the easier way using Arrays. They both fundementally tackle the same problems, so for this lesson we will follow the Array route. 
+1. Back button in a browser
+2. Undo feature in a text editor
+3. Navigation Stack in a Navigation Controller
 
-### Container Class
+## Implementations
+
+We can implement a stack two different ways.
+
+1. Using the built-in Array structure
+2. Using a custom linked list
+
+This illustrates the difference between an *abstract data type* and a *data structure*
+
+An **abstract data type** speaks only to the conceptual behavior and not to the specific implementation.
+
+A **data structure** is talking about how information is actually stored in memory.
+
+More reading: [Stack Overflow](http://stackoverflow.com/questions/13965757/what-is-the-difference-between-an-abstract-data-typeadt-and-a-data-structure)
+
+## Implement a stack using an array
 
 ```swift
-class Stack<T> {
-
+struct Stack<T> {
   private var arr: [T] = []
 
-  public init() {}
-
-}
-```
-
-This is pretty straight forward. We don't want to initialize a stack with any value. The only important member property of the class is an Array to hold our elements.
-
-### push(value)
-
-What do we want to accomplish? Adding a new element to the END of the stack. 
-
-```swift
-func push(_ newElement: T) {
-  arr.append(newElement)
-}
-```
-
-### pop()
-
-Now we want to remove and return the last element, which is also very simple using Arrays.
-
-```swift
-func pop() -> T? {
-  return arr.removeLast()
-}
-```
-
-### peek()
-
-We want to just be able to access the element on top of the stack. 
-
-```swift
-func peek() -> T? {
-  return arr.last
-}
-```
-
-### isEmpty()
-
-Check if the stack is empty.
-
-```swift
-func isEmpty() -> Bool {
-  return arr.count == 0
-}
-```
-
-### Putting it all Together
-
-```javascript
-class Stack<T> {
-
-  private var arr: [T] = []
-
-  public init() {}
-
-  func push(_ newElement: T) {
-    arr.append(newElement)
-  }
-
-  func pop() -> T? {
-    return arr.removeLast()
-  }
-
-  func peek() -> T? {
+  public var peek: T? {
     return arr.last
   }
 
-  func isEmpty() -> Bool {
+  public var isEmpty: Bool {
     return arr.count == 0
+  }
+
+  mutating func push(_ newElement: T) {
+    arr.append(newElement)
+  }
+  mutating func pop() -> T? {
+    return arr.popLast()
   }
 }
 ```
 
-As you can see, pretty simple right? Stacks are simple to conceptualize and code once you understand the fundementals. 
+## Implement a stack using a linked list
 
-## Excercise
+<details>
+	<summary><b>Node and LinkedList implementations</b></summary>
 
-Implement a Stack in the traditional way using Linked Lists. You may not use any Array or built in Array methods. 
+```swift
+class Node<T: Comparable>: CustomStringConvertible, Equatable {
+  public var value: T
+  public var next: Node?
 
-Implement the linked list based stack with the following methods:
+  var description: String {
+    guard let next = next else { return "\(value) -> nil" }
+    return "\(value) -> \(next)"
+  }
 
-1. **push(value) :** Add new element to the top of the stack.
-2. **pop() :** Remove element from top of the stack and return it. 
-3. **peek() :** Returns the top element of the stack without removing it.
-4. **isEmpty() :** Returns a boolean indicating if the stack is empty or not.
+  static func ==(lhs: Node, rhs: Node) -> Bool {
+    return
+      lhs.value == rhs.value &&
+      lhs.next == rhs.next
+  }
+
+  init(value: T) {
+    self.value = value
+  }
+}
+
+struct LinkedList<T: Comparable>: CustomStringConvertible {
+  private var head: Node<T>?
+  private var tail: Node<T>?
+
+  var description: String {
+    guard let head = head else { return "empty list" }
+    return "\(head)"
+  }
+
+  public var first: Node<T>? {
+    return head
+  }
+
+  public var last: Node<T>? {
+    return tail
+  }
+
+  public var isEmpty: Bool {
+    return head == nil
+  }
+
+  public mutating func append(_ value: T) {
+    let newNode = Node(value: value)
+    if let lastNode = tail {
+      lastNode.next = newNode
+    } else {
+      head = newNode
+    }
+    tail = newNode
+  }
+
+  public mutating func removeLast() -> Node<T>?  {
+    guard !isEmpty else { return nil }
+    var removedNode: Node<T>?
+    if head == tail {
+      removedNode = head
+      head = nil
+      tail = nil
+    }
+    var currentNode = head
+    while currentNode != nil {
+      if currentNode?.next == tail {
+        removedNode = currentNode?.next
+        currentNode?.next = nil
+        tail = currentNode
+      }
+      currentNode = currentNode?.next
+    }
+    return removedNode
+  }
+}
+
+```
+
+</details>
+
+```swift
+struct Stack<T: Comparable>: CustomStringConvertible {
+  private var items = LinkedList<T>()
+
+  public var isEmpty: Bool {
+    return items.first == nil
+  }
+
+  public var peek: T? {
+    return items.last?.value
+  }
+
+  public var top: Node<T>? {
+    return items.last
+  }
+
+  public var bottom: Node<T>? {
+    return items.first
+  }
+
+  var description: String {
+    guard !items.isEmpty else { return "empty list" }
+    var str = "["
+    var currentNode = items.first
+    while currentNode != nil {
+      if let currentNode = currentNode {
+        str += currentNode.next == nil ? "\(currentNode.value)" : "\(currentNode.value), "
+      }
+      currentNode = currentNode?.next
+    }
+    return str + "]"
+  }
+
+  public mutating func push(_ value: T) {
+    items.append(value)
+  }
+
+  public mutating func pop() -> T? {
+    return items.removeLast()?.value
+  }
+}
+```
+
+**Whiteboard Exercises**  
+Pair up according to your group to solve the whiteboard [exercises](https://github.com/joinpursuit/Pursuit-Core-iOS/blob/master/units/unit02/whiteboarding/Stacks-Exercises.md)
