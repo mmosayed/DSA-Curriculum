@@ -4,9 +4,15 @@
 
 How does logic problems and brainteasers relate to the job search and interview.
 
-1. Review [whiteboarding process](../whiteboarding/README.md)  
+1. Review [whiteboarding process](https://github.com/joinpursuit/DSA-Curriculum/tree/master/intro_to_whiteboarding)  
 1. Thought Process and approach
 1. Being able to take a problem, breaking it down and coming up with an approach to a solution
+
+TESTING
+
+## Introduction
+
+During a whiteboarding job interview, you will need to solve problems by clearly explaining your reasoning.  While some of these problems relate directly to core coding concepts that we will cover in class, some problems rely on other topics.  Today, we will review some of the background to
 
 Logic problems may still be asked at an interview as was during the Pursuit application process. Knowing how to approach example problems is essential to your job search tool set. A fair logic problem should be able to be logically deduced. Many of those problems are rooted in mathematics and computer science.
 
