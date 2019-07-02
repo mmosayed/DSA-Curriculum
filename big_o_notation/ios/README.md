@@ -6,11 +6,11 @@
 * Understand how Big-O makes it easy to label efficiency
 * Understand what the most common run times are
 
-## Lesson 
+## Lesson
 
 ### Algorithm
 
-An algorithm is a set of instructions for accomplishing a task. Every piece of code could be called an algorithm, but we tend to talk about algorithms that solve very common problems. 
+An algorithm is a set of instructions for accomplishing a task. Every piece of code could be called an algorithm, but we tend to talk about algorithms that solve very common problems.
 
 Imagine you're given a random list of names and you would like to find "John Smith" in the fastest amount of steps. Or what if you wanted to order those names alphabetically?
 
@@ -26,25 +26,25 @@ A simple way of looking at it is how many steps does it take to complete the act
 
 ### Big-O
 
-So what is Big-O and why does it matter? 
+So what is Big-O and why does it matter?
 
 Imagine you had a list of names with a 10 names. Your simple search algorithm starts at the beginning of the list and works its way down the list one name at a time. You want to find "Bob" which ends up being the last name on the list. You would end up with 10 steps to find "Bob".
 
-Not bad right? 
+Not bad right?
 
-Now what if that list was 1,000,000 names long and "Bob" was the last name on that list. You'd have to search through 1,000,000 names to find "Bob". 
+Now what if that list was 1,000,000 names long and "Bob" was the last name on that list. You'd have to search through 1,000,000 names to find "Bob".
 
-This "linear" search algorithm depends directly on the number of inputs, n. So the number of steps increase directly with n. 
+This "linear" search algorithm depends directly on the number of inputs, n. So the number of steps increase directly with n.
 
-This is would be a Linear or O(n) algorithm. 
+This is would be a Linear or O(n) algorithm.
 
 ### Where is the Time in Time Complexity?
 
-Time is relative. It's much easier to label algorithms with Big-O than say "This algorithm takes 1 second to complete". Why? Because depending on the computer you run your algorithm the exact time will change. 
+Time is relative. It's much easier to label algorithms with Big-O than say "This algorithm takes 1 second to complete". Why? Because depending on the computer you run your algorithm the exact time will change.
 
-What doesn't change is the number of steps! Using the number of steps you can calculate the time. 
+What doesn't change is the number of steps! Using the number of steps you can calculate the time.
 
-### Common Big-Os 
+### Common Big-Os
 ![](https://cdn-images-1.medium.com/max/1600/1*_8PfaIyJC7dWJOsKxz47ow.png)
 |Big O Runtime|Name|Example|
 |---|---|---|
@@ -57,7 +57,7 @@ What doesn't change is the number of steps! Using the number of steps you can ca
 ### Constant Time O(1)
 
 ```swift
-func add(num1: Int,num2: Int) -> Int { 
+func add(num1: Int,num2: Int) -> Int {
   // I have two numbers, takes one step to return the value
   return num1 + num2
 }
@@ -167,15 +167,3 @@ O(n)
 ## Resources
 
 * [Cheat Sheet](http://bigocheatsheet.com/)
-
-
-
-
-
-
-
-
-
-
-
-
